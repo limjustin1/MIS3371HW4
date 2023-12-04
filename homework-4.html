@@ -1,0 +1,290 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Homework 4</title>
+    <link rel="stylesheet" href="homework-4.css">
+    <script defer src="homework-4.js"></script>
+</head>
+ <body onload="setup()">
+    <div id="header">
+        <table width=100%>
+            <tr>
+                <div class="header" id="myHeader">
+                <header id="header">
+                    <div class="navlink">
+                        <nav>
+                            <ul class="navlink">
+                                <li><img id="logo" src="doggy daycare.jpg" alt="logo"></li>
+                                <li><a href="nav">Doggy Daycare</a></li>
+                                <li><a href="nav">Doggy Training</a></li>
+                                <li><a href="nav">Doggy Grooming</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+        <div class="date">
+            <p id="currentDate"></p>
+                <script>
+                    var today = new Date();
+                    var date = (today.getMonth()+1) + '/'+ today.getDate() +'/'+ today.getFullYear();
+                    document.getElementById("currentDate").innerHTML = date;
+                </script>
+        </div>
+                </header>
+            </div>
+            </tr>
+        </table>
+    </div>
+<div id=body>
+    <form class="form" id="form">
+        <table class="tableform">
+            <tr>
+                <th colspan="3">Dog Trainer Application</th>
+                <div>
+                <span id="cookie"></span>
+            </div>
+            </tr>
+
+    <div class="container">
+            <tr>
+                <td>
+                    <div class="input-control">
+                        <label for="firstname">Firstname:</label>
+                        <input type="text" id="firstname" minlength="2" maxlength="30" title="Enter your first name" required onblur="checkfirstname()" oninvalid="this.setCustomValidity('First name is required and can not contain special characters')" oninput="this.setCustomValidity('')">
+                        <div class="error" id="error"></div>
+                        <span id="message_first"></span>
+                    </div>
+
+                    <div class="input-control">
+                        <label for="middlename">Middlename:</label>
+                        <input type="text" id="middleinit" maxlength="1" title="Enter your middle initial" required oninvalid="checkmiddlename()" oninput="this.setCustomValidity('')" onblur="checkmiddlename()">
+                        <div class="error" id="error"></div>
+                        <span id="message_middle"></span>
+                    </div>
+
+                    <div class="input-control">
+                        <label for="lastname">Lastname:</label>
+                        <input type="text" id="lastname" maxlength="30" title="Enter your last name" required oninvalid="this.setCustomValidity('Laast name is required and can not contain special characters')" oninput="this.setCustomValidity('')" onblur="checklastname()">
+                        <div class="error"></div>
+                        <span id="message_last"></span>
+                    </div>
+
+                    <div class ="input-control">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob"><br><br>
+                        <div class="error"></div>
+                    </div>
+
+                        <label for="dog1">What type of dogs do you have experience in training?</label><br>
+                        <input type="checkbox" id="dog1" name="dog1" value="golden retriever">
+                        <label for="dog1">Golden Retriever</label><br>
+                        <input type="checkbox" id="dog2" name="dog2" value="poodle">
+                        <label for="dog2">Poodle</label><br>
+                        <input type="checkbox" id="dog3" name="dog3" value="bulldog">
+                        <label for="dog3">Bulldog</label><br>
+                        <input type="checkbox" id="other" name="other" value="other">
+                        <label for="other">Other</label><br>
+                        <p> If 'Other' provide us with what other dog breeds you have trained</p>
+                        <textarea id="text" name="text" rows="3" cols="50"></textarea><br><br>
+
+                        <div class="slidecontainer">
+                            <input type="range" min="10" max="50" value="0" class="slider" id="myRange">
+                            <p>Desired salary per hour: <span id="demo"></span></p>
+                          </div>
+                          <script>
+                            var slider = document.getElementById("myRange");
+                            var output = document.getElementById("demo");
+                            output.innerHTML = slider.value;
+                            
+                            slider.oninput = function() {
+                              output.innerHTML = this.value;
+                            }
+                            </script>
+                </td>
+                
+            <td></td>
+            </tr>
+
+                 <tr>
+                <td>
+                    <div class="input-control">
+                        <label for="email">Email</label>
+                        <input type="email" maxlength="30" id="email" name="email" placeholder="johndoe@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,20}$" required 
+                        oninvalid="this.setCustomValidity('email not valid.')"
+                        oninput="this.setCustomValidity('')">
+                        <div class="error"></div>
+                    </div>
+
+                    <div class="input-control">
+                        <label for="password">Password</label>
+                        <input id="password"name="password" type="password" required onblur="checkpassword()" oninput="checkpassword()">
+                        <div class="error"></div>
+                        <span id="message_password"></span>
+                    </div>
+                    <div class="input-control">
+                        <label for="password2">Password again</label>
+                        <input id="password2"name="password2" type="password" required onblur="passwordmatch()">
+                        <div class="error"></div>
+                        <span id="message_password2"></span>
+                    </div>
+                    <div class="input-control">
+                        <label for="ssn">Social Security Number:</label>
+                        <input id="ssn"name="ssn" type="text" maxlength="11" placeholder="###-##-####" oninput="formatssn()">
+                        <div class="error"></div>
+                        <span id="message_ssn"></span>
+                    </div>
+
+
+                    <div class ="input-control">
+                        <label for="state">State:</label>
+                        <!--- State Names -->
+                            <select id="country-state" name="country-state" required onblur="checkstate()">
+                            <option value="">Select state</option>
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AS">American Samoa</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="UM-81">Baker Island</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="DC">District of Columbia</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="GU">Guam</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="UM-84">Howland Island</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="UM-86">Jarvis Island</option>
+                            <option value="UM-67">Johnston Atoll</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="UM-89">Kingman Reef</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="UM-71">Midway Atoll</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="UM-76">Navassa Island</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="MP">Northern Mariana Islands</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="UM-95">Palmyra Atoll</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UM">United States Minor Outlying Islands</option>
+                            <option value="VI">United States Virgin Islands</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="UM-79">Wake Island</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                            </select>
+                            <div class="error"></div>
+                        <span id="message_state"></span><br><br> 
+                    </div>
+
+                    <div class ="input-control">
+                        <label for="zip">Zip/Postal code:</label>
+                        <input type="text" id="zip" minlength="5" maxlength="5" pattern="\d{5}">
+                    </div>
+
+                    <div class ="input-control">
+                        <label for="phone">Phone number:</label>
+                        <input type="text" id="phone">
+                    </div>
+
+                    <div class ="input-control">
+                        <label for="address">Address line:</label>
+                        <input type="text" id="address" maxlength="30" minlength="2" required onblur="checkaddress()">
+                        <div class="error"></div>
+                        <span id="message_address"></span>
+
+                    </div>
+
+                    <div class ="input-control">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" maxlength="30" minlength="2" required onblur="checkcity()">
+                        <div class="error"></div>
+                        <span id="message_city"></span>
+                    </div>
+
+                    
+                        <label for="covid">Have you been vaccinated?</label>
+                        <input type="radio" id="yes" name="covid" value="yes">
+                        <label for="covid">yes</label>
+                        <input type="radio" id="no" name="covid" value="no">
+                        <label for="covid">no</label><br><br>
+                
+
+
+                    <label for="wk">Can you work weekends</label>
+                    <input type="radio" id="yes1" name="wk" value="yes">
+                    <label for="covid">yes</label>
+                    <input type="radio" id="no1" name="wk" value="no">
+                    <label for="covid">no</label><br><br>
+         
+                    <label for="age">Are you over 18?</label>
+                    <input type="radio" id="yes2" name="age" value="yes">
+                    <label for="covid">yes</label>
+                    <input type="radio" id="no2" name="age" value="no">
+                    <label for="covid">no</label><br><br>
+
+                   
+
+
+                </td>
+            </tr>
+
+                <tr>
+                    <td>
+                      
+                        <button id="button" id="check" onclick="checkform()" >Check form</button>
+                        <button type="submit" id="submit" >Submit</button>
+                        <button type="reset" value="clear">Clear</button>
+                        <iframe src="footer.html" style="width:100%"></iframe>
+                        <script>
+                            var end = document.getElementById("submit");
+                            end.addEventListener('click', function(){
+window.location.href="thankyou.html";
+                            });
+
+                            
+                        </script>
+                 
+  
+                    </td>
+                </tr>
+            </form>
+        
+    </div>
+</body>
+</html>
